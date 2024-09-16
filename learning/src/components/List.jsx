@@ -1,28 +1,33 @@
+
+import PropTypes  from "prop-types";
 import React from "react";
+import { propTypes } from "react-bootstrap/esm/Image";
 
-const List = () => {
-  const fruits = [
-    { id: 1, name: "mangoes", calories: 34 },
-    { id: 2, name: "bananas", calories: 120 },
-    { id: 3, name: "oranges", calories: 159 },
-    { id: 4, name: "apples", calories: 60 },
-    { id: 5, name: "coconuts", calories: 120 },
-  ];
-  fruits.sort((a, b) => a.name.localeCompare(b.name));
+const List = ({ category= 'category', items=[]} ) => {
 
-  const listitem = fruits.map((fruit) => {
-    return (
-      <li key={fruit.id}>
-        {fruit.name} &nbsp; <b>{fruit.calories}</b>
-      </li>
-    );
-  });
+
+ 
+  const listItems = items.map((item) => (
+    <li key={item.id}>
+      {item.name} &nbsp; <b>{item.calories}</b>
+    </li>
+  ));
+
 
   return (
     <div>
-      <ol>{listitem}</ol>
+      <h3 className="list-category">{category}</h3>
+      <ol className="list-items">{listItems }</ol>
     </div>
   );
 };
+List.propTypes = {
+  category: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.shape({id: PropTypes.number,
+                                            name: PropTypes.string,
+                                            calories:PropTypes.number
+  }))
+}
+
 
 export default List;
