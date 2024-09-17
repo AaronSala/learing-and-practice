@@ -134,3 +134,10 @@ font-weight: 600;
     margin-top: 2rem;
 }
 
+#pattern{
+    background-color: #000006;
+    padding: 2rem;
+    color: rgb(5, 244, 5);
+    text-align: center;
+    width: 100%;
+}

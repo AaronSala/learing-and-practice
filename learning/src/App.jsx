@@ -1,6 +1,7 @@
 
 
 import './App.css'
+
 import ArrayUpdate from './components/ArrayUpdate';
 import Buttons from './components/Buttons';
 import Changing from './components/Changing';
@@ -36,7 +37,8 @@ function App() {
       {/* <Changing />*/}
       {/* < ColorChanger />*/}
       {/* <ObjectUpdate />*/}
-      <ArrayUpdate />
+      {/*<ArrayUpdate />*/}
+      
     </>
   );
 }
