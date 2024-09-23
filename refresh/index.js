@@ -1,73 +1,54 @@
-//var
 //closures
-let firstname = "Aaron";
 
-function showname() {
-  let secondName = "Sala";
-  // console.log(`hallo ${firstname} ${secondName} `);
-  function location() {
-    const residence = "Nairobi";
-    // console.log(`${firstname} ${secondName} is from ${residence}`);
+function outer() {
+  let counter = 0;
+  function inner() {
+    counter++;
+    console.log(counter);
   }
-  return location;
+  return inner;
 }
-const details = showname();
-details();
+const last = outer();
+last();
 
-//IIFE
+//carrying
 
-const counter = ((num) => {
-  //console.log( num+1)
-})(5);
+function sum(num1) {
+  return function (num2) {
+    return function (num3) {
+      return num1+num2+num3
+    };
+  };
+}
+const total = sum(9);
+console.log(total(8)(0));
+
+//this
+//implicit binding
+const person= {
+  name: "aaron",
+   sayName: function() {
+       console.log(`my name is ${this.name}`);
+    },
+ 
+}
+person.sayName()
+
+//explicit binding
+function sayName(){
+       console.log(`my name is ${this.name}`);
+    }
+
+sayName.call(person)
+
+//new binding
+const Person = function (name) {
+  this.name = name;
+  console.log(`my second Name is ${this.name}`);
+  
+}
+
+const person2 = new Person('mutuku')
+const person3 = new Person("mwangu");
 
 //prototypes
-const person = {
-  alive: true,
-};
-const musician = {
-  plays: true,
-};
-Object.setPrototypeOf(musician, person);
-//console.log(musician.alive);
-
-class car {
-  constructor() {
-    (this.drives = true), (this.wheels = 4);
-  }
-  ready() {
-    return "ready to go";
-  }
-}
-
-function Student(name, classes, age) {
-  (this.name = name), (this.classes = classes), (this.age = age);
-}
-Student.prototype.gender = "male";
-
-const student1 = new Student("Aaron", "form 4", 19);
-const student2 = new Student("Sala", "form 2", 15);
-
-
-//fibbonacci
-
-function coocking(ingredient1) {
-  return (ingredient2) => {
-    return (ingredient3)=>{
-      return `${ingredient1} + ${ingredient2} + ${ingredient3}`
-    }
-  }
-}
-
-console.log(coocking("beans")("rice")('potatoes'))
-
-const multuply = (num1) => num2 => num1 * num2
-const total = multuply(12)(20)
-console.log(total);
- 
-
-
-(function myIIFE(num=0) {
-  num++;
-  console.log(num);
-  return num !== 5 ? myIIFE(num) : console.log("finished");
-})();
