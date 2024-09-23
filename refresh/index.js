@@ -63,3 +63,11 @@ console.log(coocking("beans")("rice")('potatoes'))
 const multuply = (num1) => num2 => num1 * num2
 const total = multuply(12)(20)
 console.log(total);
+ 
+
+
+(function myIIFE(num=0) {
+  num++;
+  console.log(num);
+  return num !== 5 ? myIIFE(num) : console.log("finished");
+})();
